@@ -55,5 +55,5 @@ if ct is not None and ct == tag:
     exit(0)
 else:
     write_new_tag(filedata, tag)
-    logger.warn("Need update, system will reboot. get tag from docker hub: {}. current tag: {}".format(tag, ct))
+    logger.warn("Need update, gitlab will reboot. get tag from docker hub: {}. current tag: {}".format(tag, ct))
     os.system('docker-compose down && docker-compose up -d')
