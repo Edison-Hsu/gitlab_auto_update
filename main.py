@@ -56,4 +56,4 @@ if ct is not None and ct == tag:
 else:
     write_new_tag(filedata, tag)
     logger.warn("Need update, system will reboot. get tag from docker hub: {}. current tag: {}".format(tag, ct))
-    os.system('reboot')
+    os.system('docker-compose down && docker-compose up -d')
