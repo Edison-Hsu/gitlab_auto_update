@@ -1,4 +1,4 @@
-# gitlab docker image auto update
+# Gitlab docker image auto update
 
 ## Origin
 
