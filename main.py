@@ -11,6 +11,10 @@ def get_current_tag(text):
         return match.group(0).split(":")[1]
     else:
         return None
+    
+def remove_old_image(tag):
+    img_name = "sameersbn/gitlab:{}".format(tag)
+    os.system("docker rmi {}".format(img_name))
 
 def write_new_tag(filedata, tag):
     filedata = re.sub(r'sameersbn/gitlab:.+', 'sameersbn/gitlab:' + tag, filedata)
@@ -57,3 +61,4 @@ else:
     write_new_tag(filedata, tag)
     logger.warn("Need update, gitlab will reboot. get tag from docker hub: {}. current tag: {}".format(tag, ct))
     os.system('docker-compose down && docker-compose up -d')
+    remove_old_image(ct)
